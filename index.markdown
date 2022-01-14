@@ -4,3 +4,5 @@
 
 layout: home
 ---
+
+$$ x = y ^2 $$
