@@ -27,10 +27,22 @@ $grey-color-dark-dark-mode:  darken($grey-color-dark-mode, 25%) !default;
   	body {
   		background: $text-background-color-dark;
   		color: $text-color-dark;
+  		
+  		math, .MathJax, .mjx-math {
+    		color: $label-color-dark;
+		}
+  		
   		a {
     		color: $link-color-dark;
     		&:hover {
       		color: $link-color-dark;
+    		}
+  		}
+  		
+
+		.site-nav {
+  			.page-link {
+    			color: $secondary-label-color-dark;
     		}
   		}
   		

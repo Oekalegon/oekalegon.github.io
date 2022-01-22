@@ -8,6 +8,6 @@ TEST
 
 This post contains some tests for creating posts that include mathematics.
 
-$$ x_i = y_i ^2 $$ 
+$$ \int_{0}^{P(R)} V dP = - \frac{1}{3} \int_{0}^{M} \frac{Gm\:dm}{r}$$ 
 
 inline
