@@ -5,4 +5,4 @@
 layout: home
 ---
 
-$$ x = y ^2 $$
+Hello world! 

@@ -1,0 +1,81 @@
+
+
+
+// Dark mode colors
+$text-color-dark:           		rgba(255,255,255,1.0) !default;
+$link-color-dark:           		rgba(53,145,255,1.0) !default;
+$label-color-dark:           		rgba(255,255,255,0.85) !default;
+$secondary-label-color-dark:        rgba(255,255,255,0.55) !default;
+$tertiary-label-color-dark:         rgba(255,255,255,0.25) !default;
+$quaternary-label-color-dark:       rgba(255,255,255,0.1) !default;
+$primary-background-dark: 			#000 !default;
+$text-background-color-dark: 	    rgba(23,23,23,1.0) !default;
+$window-background-color-dark: 	    rgba(38,38,38,1.0) !default;
+$secondary-background-dark: 	#1c1c1e !default;
+$grey-dark: 					#3a3a3c !default;
+$tertiary-fill-dark: 		#76768099 !default;
+$transparent_seperator-dark: 		#76768099 !default;
+
+$brand-color-dark-mode:      		#2a7ae2 !default;
+
+$grey-color-dark-mode:       #484848 !default;
+$grey-color-light-dark-mode: lighten($grey-color-dark-mode, 40%) !default;
+$grey-color-dark-dark-mode:  darken($grey-color-dark-mode, 25%) !default;
+
+@mixin dark-mode {
+
+  	body {
+  		background: $text-background-color-dark;
+  		color: $text-color-dark;
+  		a {
+    		color: $link-color-dark;
+    		&:hover {
+      		color: $link-color-dark;
+    		}
+  		}
+  		
+		.site-title {
+
+  			&,
+  			&:visited {
+    			color: $secondary-label-color-dark,
+  			}
+		}
+
+		.post-meta {
+  			color: $label-color-dark;
+		}
+
+		/**
+ 		* Site header
+ 		*/
+		.site-header {
+  			background: $window-background-color-dark;
+ 			border-top: 2px solid orange;
+  			border-bottom: 1px solid $transparent_seperator-dark;
+		}
+
+		/**
+ 		* Site footer
+ 		*/
+		.site-footer {
+  			background: $window-background-color-dark;
+  			border-top: 1px solid $transparent_seperator-dark;
+  			color: $label-color-dark;
+		}
+		
+
+		.footer-col-wrapper {
+  			color: $secondary-label-color-dark;
+		}
+		
+		/**
+ 		 * Code formatting
+ 		 */
+ 		pre,
+		code {
+  			border: 0px none;
+  			background-color: $window-background-color-dark;
+		}
+  	}
+}
