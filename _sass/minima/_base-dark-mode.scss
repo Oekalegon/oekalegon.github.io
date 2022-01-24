@@ -24,6 +24,26 @@ $grey-color-dark-dark-mode:  darken($grey-color-dark-mode, 25%) !default;
 
 @mixin dark-mode {
 
+	.star-cross-section {
+		fill: #222;
+		stroke: #bbb;
+	}
+
+    .star-cross-section-highlight {
+	    fill: #444;
+	    stroke: #bbb;
+    }
+    
+	.measure-path {
+		stroke: #bbb;
+		fill: #bbb;
+	}
+
+	.measure-text {
+		stroke: #bbb;
+		fill: #bbb;
+	}
+
   	body {
   		background: $text-background-color-dark;
   		color: $text-color-dark;

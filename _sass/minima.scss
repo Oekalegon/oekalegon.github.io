@@ -45,8 +45,8 @@ $on-laptop:        800px !default;
 
 // Import partials.
 @import
+  "minima/svg-astrophysics-figures",
   "minima/base-dark-mode",
   "minima/base",
-  "minima/layout",
-  "minima/syntax-highlighting"
+  "minima/layout"
 ;
