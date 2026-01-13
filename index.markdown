@@ -1,8 +1,12 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: home
+layout: default
+title: Home
 ---
 
-Hello world! 
+# Welcome
+
+Welcome to my personal site. Here you'll find articles about astrophotography, image processing, and other topics I'm passionate about.
+
+## Recent Articles
+
+Check out my latest articles on astrophotography techniques and image processing.
