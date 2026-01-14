@@ -40,6 +40,8 @@ plugins:
 
 # Collections
 collections:
+  posts:
+    output: true
   articles:
     output: true
     permalink: /articles/:path/
