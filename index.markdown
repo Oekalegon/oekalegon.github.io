@@ -26,3 +26,10 @@ Welcome to my personal site. Here you'll find articles about astrophotography, i
 {% else %}
   <p>No articles yet. Check back soon!</p>
 {% endif %}
+
+## Projects
+
+I am currently working on a set of astrophotography pipelines implemented in Swift and Metal. Please check it out: 
+<a href="https://oekalegon.org/AstrophotoKit/" target="_blank" rel="noopener noreferrer">
+    AstrophotoKit
+</a>.
