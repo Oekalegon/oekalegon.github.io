@@ -26,12 +26,3 @@ Welcome to my personal site. Here you'll find articles about astrophotography, i
 {% else %}
   <p>No articles yet. Check back soon!</p>
 {% endif %}
-
----
-
-<div style="text-align: center; margin-top: 3em;">
-  <a href="https://cloudappreciationsociety.org" target="_blank" rel="noopener noreferrer">
-    <img src="/assets/images/cas-supporter.png" alt="Cloud Appreciation Society Supporter" style="max-width: 60px; height: auto;">
-  </a>
-</div>
-
