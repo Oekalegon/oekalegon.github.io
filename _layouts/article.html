@@ -1,0 +1,215 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <style>
+    /* Styles for article layout - works without theme CSS */
+    * { box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+      line-height: 1.6; 
+      color: #333; 
+      margin: 0; 
+      padding: 0;
+      background: #fff;
+    }
+    .wrapper { 
+      max-width: 800px; 
+      margin: 0 auto; 
+      padding: 20px;
+    }
+    .site-header { 
+      border-bottom: 1px solid #eee; 
+      padding-bottom: 20px; 
+      margin-bottom: 30px; 
+    }
+    .site-title { 
+      margin: 0 0 10px 0; 
+      font-size: 2em;
+    }
+    .site-title a { 
+      text-decoration: none; 
+      color: inherit; 
+    }
+    .site-author {
+      margin: 0;
+      color: #666;
+      font-size: 0.9em;
+    }
+    .main-content {
+      margin: 30px 0;
+    }
+    .post-title { 
+      margin-top: 0; 
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+    .post-meta { 
+      color: #666; 
+      font-size: 0.9em; 
+      margin: 10px 0; 
+    }
+    .post-series {
+      font-weight: 600;
+    }
+    .post-categories { 
+      margin: 15px 0; 
+    }
+    .post-category { 
+      background: #f0f0f0; 
+      padding: 3px 8px; 
+      border-radius: 3px; 
+      font-size: 0.85em; 
+      margin-right: 5px;
+      display: inline-block;
+    }
+    .post-content { 
+      margin-top: 30px; 
+    }
+    .post-content h1, .post-content h2, .post-content h3, .post-content h4 { 
+      margin-top: 30px; 
+      margin-bottom: 15px; 
+      font-weight: 600;
+    }
+    .post-content h1 { font-size: 1.8em; }
+    .post-content h2 { font-size: 1.5em; }
+    .post-content h3 { font-size: 1.3em; }
+    .post-content p { 
+      margin-bottom: 15px; 
+    }
+    .post-content ul, .post-content ol { 
+      margin-bottom: 15px; 
+      padding-left: 30px; 
+    }
+    .post-content li {
+      margin-bottom: 5px;
+    }
+    .post-content table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin: 20px 0; 
+    }
+    .post-content table th, .post-content table td { 
+      border: 1px solid #ddd; 
+      padding: 8px 12px; 
+      text-align: left; 
+    }
+    .post-content table th { 
+      background-color: #f5f5f5; 
+      font-weight: bold; 
+    }
+    .post-content code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    .post-content pre {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .post-content pre code {
+      background: none;
+      padding: 0;
+    }
+    .site-footer {
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { 
+        background: #1a1a1a; 
+        color: #e0e0e0; 
+      }
+      .site-header {
+        border-bottom-color: #333;
+      }
+      .post-category { 
+        background: #333; 
+        color: #e0e0e0;
+      }
+      .post-content table th { 
+        background-color: #2a2a2a; 
+      }
+      .post-content table th, .post-content table td { 
+        border-color: #444; 
+      }
+      .post-content code {
+        background: #2a2a2a;
+        color: #e0e0e0;
+      }
+      .post-content pre {
+        background: #2a2a2a;
+      }
+      .site-footer {
+        border-top-color: #333;
+      }
+    }
+  </style>
+  {% if page.usemathjax %}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  {% endif %}
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      {% if site.author %}
+      <p class="site-author">{{ site.author.name }}</p>
+      {% endif %}
+    </header>
+
+    <main class="main-content">
+      <article class="post">
+        <header class="post-header">
+          <h1 class="post-title">{{ page.title }}</h1>
+          {% if page.series %}
+          <div class="post-meta">
+            <span class="post-series">{{ page.series }}</span>
+            {% if page.series_order %}
+            <span class="post-series-order">Part {{ page.series_order }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+          {% if page.categories %}
+          <div class="post-categories">
+            {% for category in page.categories %}
+            <span class="post-category">{{ category }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </header>
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </footer>
+  </div>
+</body>
+</html>
