@@ -38,7 +38,6 @@ Calculate the light pollution signal for your specific telescope and camera setu
       <div>
         <label for="pixel-size" style="display: block; margin-bottom: 5px; font-weight: bold;">Pixel Size (μm):</label>
         <input type="number" id="pixel-size" value="3.8" min="0.1" step="0.1" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-        <small style="color: #666;">Assumed square (same in width and height)</small>
       </div>
       <div style="grid-column: 2;"></div>
     </div>
@@ -60,6 +59,14 @@ Calculate the light pollution signal for your specific telescope and camera setu
         <label for="pixels-height" style="display: block; margin-bottom: 5px; font-weight: bold;">Pixels (Height):</label>
         <input type="number" id="pixels-height" value="" min="1" step="1" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
       </div>
+      <div>
+        <label for="pixel-size-direction" style="display: block; margin-bottom: 5px; font-weight: bold;">Use pixel size from:</label>
+        <select id="pixel-size-direction" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+          <option value="average">Average (recommended)</option>
+          <option value="width">Width direction</option>
+          <option value="height">Height direction</option>
+        </select>
+      </div>
     </div>
     
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
@@ -76,8 +83,7 @@ Calculate the light pollution signal for your specific telescope and camera setu
     <h2>Calculated Parameters</h2>
     <div style="padding: 15px; border-radius: 5px; margin-bottom: 20px;">
       <p><strong>Collecting Area:</strong> <span id="collecting-area"></span> $\mathrm{cm}^2$</p>
-      <p><strong>Pixel Scale (Width):</strong> <span id="pixel-scale-width"></span> $\mathrm{arcsec}/\mathrm{pixel}$</p>
-      <p><strong>Pixel Scale (Height):</strong> <span id="pixel-scale-height"></span> $\mathrm{arcsec}/\mathrm{pixel}$</p>
+      <p><strong>Pixel Scale:</strong> <span id="pixel-scale"></span> $\mathrm{arcsec}/\mathrm{pixel}$</p>
       <p><strong>Pixel Solid Angle:</strong> <span id="pixel-solid-angle"></span> $\mathrm{arcsec}^2$</p>
     </div>
     

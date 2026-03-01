@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Light Pollution"
+title: "Light Pollution for Astrophotographers"
 series: "Exposure time and Stacking in Astrophotography"
 series_order: 2
 categories: astrophotography light-pollution

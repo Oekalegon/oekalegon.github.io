@@ -41,27 +41,23 @@ function calculateLightPollution() {
   const focalLength = parseFloat(document.getElementById('focal-length').value); // mm
   const qe = parseFloat(document.getElementById('quantum-efficiency').value);
   
-  // Get pixel sizes based on input method
+  // Get pixel size based on input method
   const method = document.querySelector('input[name="pixel-input-method"]:checked').value;
-  let pixelSizeWidth, pixelSizeHeight; // μm
+  let pixelSize; // μm
   
   if (method === 'size') {
-    const pixelSize = parseFloat(document.getElementById('pixel-size').value);
-    
+    pixelSize = parseFloat(document.getElementById('pixel-size').value);
     if (isNaN(pixelSize) || pixelSize <= 0) {
       alert('Please enter a valid pixel size value');
       return;
     }
-    
-    // Assume square pixels (same in width and height)
-    pixelSizeWidth = pixelSize;
-    pixelSizeHeight = pixelSize;
   } else {
     // Calculate from sensor dimensions
     const sensorWidth = parseFloat(document.getElementById('sensor-width').value); // mm
     const sensorHeight = parseFloat(document.getElementById('sensor-height').value); // mm
     const pixelsWidth = parseFloat(document.getElementById('pixels-width').value);
     const pixelsHeight = parseFloat(document.getElementById('pixels-height').value);
+    const direction = document.getElementById('pixel-size-direction').value;
     
     if (isNaN(sensorWidth) || sensorWidth <= 0) {
       alert('Please enter a valid sensor width');
@@ -81,11 +77,21 @@ function calculateLightPollution() {
     }
     
     // Calculate pixel sizes in both directions (convert mm to μm)
-    pixelSizeWidth = (sensorWidth / pixelsWidth) * 1000; // μm
-    pixelSizeHeight = (sensorHeight / pixelsHeight) * 1000; // μm
+    const pixelSizeWidth = (sensorWidth / pixelsWidth) * 1000; // μm
+    const pixelSizeHeight = (sensorHeight / pixelsHeight) * 1000; // μm
+    
+    // Use the selected direction
+    if (direction === 'width') {
+      pixelSize = pixelSizeWidth;
+    } else if (direction === 'height') {
+      pixelSize = pixelSizeHeight;
+    } else {
+      // Average
+      pixelSize = (pixelSizeWidth + pixelSizeHeight) / 2;
+    }
   }
   
-  console.log('Input values:', { aperture, focalLength, pixelSizeWidth, pixelSizeHeight, qe });
+  console.log('Input values:', { aperture, focalLength, pixelSize, qe });
   
   // Validate inputs
   if (isNaN(aperture) || aperture <= 0) {
@@ -105,26 +111,24 @@ function calculateLightPollution() {
   const radiusCm = (aperture / 2) / 10; // Convert mm to cm, then get radius
   const collectingArea = Math.PI * radiusCm * radiusCm; // cm²
   
-  // Calculate pixel scales in both directions (arcsec/pixel)
+  // Calculate pixel scale (arcsec/pixel)
   // pixel_scale = 206.265 * pixel_size_um / focal_length_mm
   // (206.265 accounts for unit conversion: 206265 arcsec/radian, but pixel_size is in μm and focal_length in mm)
-  const pixelScaleWidth = 206.265 * pixelSizeWidth / focalLength; // arcsec/pixel
-  const pixelScaleHeight = 206.265 * pixelSizeHeight / focalLength; // arcsec/pixel
+  const pixelScale = 206.265 * pixelSize / focalLength; // arcsec/pixel
   
-  // Calculate pixel solid angle (arcsec²) as product of both scales
-  const pixelSolidAngle = pixelScaleWidth * pixelScaleHeight; // arcsec²
+  // Calculate pixel solid angle (arcsec²)
+  const pixelSolidAngle = pixelScale * pixelScale; // arcsec²
   
-  console.log('Calculated:', { collectingArea, pixelScaleWidth, pixelScaleHeight, pixelSolidAngle });
+  console.log('Calculated:', { collectingArea, pixelScale, pixelSolidAngle });
   
   // Display calculated parameters
   const collectingAreaEl = document.getElementById('collecting-area');
-  const pixelScaleWidthEl = document.getElementById('pixel-scale-width');
-  const pixelScaleHeightEl = document.getElementById('pixel-scale-height');
+  const pixelScaleEl = document.getElementById('pixel-scale');
   const pixelSolidAngleEl = document.getElementById('pixel-solid-angle');
   
+  // Display calculated parameters
   if (collectingAreaEl) collectingAreaEl.textContent = collectingArea.toFixed(1);
-  if (pixelScaleWidthEl) pixelScaleWidthEl.textContent = pixelScaleWidth.toFixed(2);
-  if (pixelScaleHeightEl) pixelScaleHeightEl.textContent = pixelScaleHeight.toFixed(2);
+  if (pixelScaleEl) pixelScaleEl.textContent = pixelScale.toFixed(2);
   if (pixelSolidAngleEl) pixelSolidAngleEl.textContent = pixelSolidAngle.toFixed(2);
   
   // Calculate and display results for each Bortle class
